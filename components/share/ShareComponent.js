@@ -1,10 +1,11 @@
 // import liraries
 import React, { Component } from 'react';
 import {
-  View, Text, StyleSheet, TouchableOpacity, Share,
+  View, Text, StyleSheet, TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import IconEmail from 'react-native-vector-icons/MaterialCommunityIcons';
+import Share from 'react-native-share';
 // import { ShareDialog } from 'react-native-fbsdk';
 // create a component
 
@@ -13,48 +14,83 @@ class ShareComponent extends Component {
   constructor(props) {
     super(props);
     const shareLinkContent = {
-      title: 'Title',
-      message: ' HOLA', // Note that according to the documentation at least one of "message" or "url" fields is required
-      url: '',
-      subject: 'Subject',
+      title: 'React Native',
+      message: 'Hola mundo',
+      url: 'www.planb.com.mx',
+      social: null,
     };
 
     this.state = { shareLinkContent };
   }
 
 
-  onSharePress = () => Share.share(this.state.shareLinkContent);
+   share= (social) => {
+     Share.shareSingle({
+       title: 'React Native',
+       message: 'Hola mundo',
+       url: 'www.planb.com.mx',
+       social,
+     });
+   }
 
-  render() {
-    console.log(this.props);
-    return (
-      <View style={styles.container}>
 
-        <View style={styles.sharemedia}>
-          <Icon name="facebook-square" size={30} color="#222831" />
-          <TouchableOpacity onPress={this.onSharePress}>
-            <Text style={styles.textShare}>Facebook</Text>
-          </TouchableOpacity>
+   render() {
+     return (
+       <View style={styles.container}>
 
-        </View>
-        <View style={styles.sharemedia}>
-          <Icon name="whatsapp" size={30} color="#222831" />
-          <Text style={styles.textShare}>WhatsApp</Text>
-        </View>
 
-        <View style={styles.sharemedia}>
-          <IconEmail name="email" size={30} color="#222831" />
-          <Text style={styles.textShare}>Correo</Text>
-        </View>
+         <TouchableOpacity
+           onPress={() => {
+             setTimeout(() => {
+               this.share('facebook');
+             }, 300);
+           }}
+           style={styles.sharemedia}
+         >
+           <Icon name="facebook-square" size={30} color="#222831" />
+           <Text style={styles.textShare}>Facebook</Text>
+         </TouchableOpacity>
 
-        <View style={styles.sharemedia}>
-          <Icon name="twitter-square" size={30} color="#222831" />
-          <Text style={styles.textShare}>Twitter</Text>
-        </View>
 
-      </View>
-    );
-  }
+         <TouchableOpacity
+           onPress={() => {
+             setTimeout(() => {
+               this.share('whatsapp');
+             }, 300);
+           }}
+           style={styles.sharemedia}
+         >
+           <Icon name="whatsapp" size={30} color="#222831" />
+           <Text style={styles.textShare}>WhatsApp</Text>
+         </TouchableOpacity>
+
+         <TouchableOpacity
+           onPress={() => {
+             setTimeout(() => {
+               this.share('email');
+             }, 300);
+           }}
+           style={styles.sharemedia}
+         >
+           <IconEmail name="email" size={30} color="#222831" />
+           <Text style={styles.textShare}>Correo</Text>
+
+         </TouchableOpacity>
+
+         <TouchableOpacity
+           onPress={() => {
+             setTimeout(() => {
+               this.share('twitter');
+             }, 300);
+           }}
+           style={styles.sharemedia}
+         >
+           <Icon name="twitter-square" size={30} color="#222831" />
+           <Text style={styles.textShare}>Twitter</Text>
+         </TouchableOpacity>
+       </View>
+     );
+   }
 }
 
 // define your styles
