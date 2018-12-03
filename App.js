@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, StatusBar, View } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import SplashScreen from 'react-native-splash-screen';
 import { RutasPrincipales } from './RutasPrincipales';

@@ -3,8 +3,8 @@ package com.mxopportunity;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-//import org.devio.rn.splashscreen.SplashScreenReactPackage;
-import com.cboy.rn.splashscreen.SplashScreenReactPackage;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
+//import org.devio.rn.splashscreen.SplashScreen;
 
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
