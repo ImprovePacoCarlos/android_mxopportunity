@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120px" height="120px" viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>Facebook</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#6387D3" offset="0%"></stop>
+            <stop stop-color="#2D4A86" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icons" transform="translate(-1722.000000, -50.000000)">
+            <g id="Facebook-Apps" transform="translate(1722.000000, 50.000000)">
+                <g id="Facebook">
+                    <path d="M91.40625,2.04546525e-15 C108.75,2.04546525e-15 120,11.25 120,28.59375 L120,91.40625 C120,108.75 108.75,120 91.40625,120 L28.59375,120 C11.25,120 0,108.75 0,91.40625 L0,28.59375 C0,11.25 11.25,2.04546526e-15 28.59375,2.04546526e-15 L91.40625,2.04546525e-15 Z" id="App-Icon-Shape" fill="url(#linearGradient-1)"></path>
+                    <path d="M62.7719299,119.406483 L62.7719299,72.9273823 L47.6724416,72.9273823 L47.6724416,56.2133449 L62.7719297,56.2133449 L62.7719299,43.9574995 C62.7719299,43.9574995 61.6857678,18.4824782 83.7317678,18.4824782 L101.565001,18.4824782 L101.565,35.5116784 L90.453,35.5116784 C90.453,35.5116784 82.275,35.0679213 82.186,43.5083011 L82.185999,56.2133449 L100.163431,56.2133449 L97.5705205,72.9273823 L82.0080014,72.9273823 L82.0080014,120 L62.7719299,120 L62.7719299,119.406483 Z" id="Icon" fill="#FFFFFF"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
