@@ -1,14 +1,13 @@
 package com.mxopportunity;
-
 import com.facebook.react.ReactActivity;
-
-// react-native-splash-screen < 0.3.1
-
-import android.os.Bundle; // import this
+import android.os.Bundle;
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.ReactRootView;
 import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;
 import org.devio.rn.splashscreen.SplashScreen;
+
+import android.content.Intent;
+
 
 public class MainActivity extends ReactActivity {
 
@@ -16,7 +15,12 @@ public class MainActivity extends ReactActivity {
      * Returns the name of the main component registered from JavaScript.
      * This is used to schedule rendering of the component.
      */
-   
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        MainApplication.getCallbackManager().onActivityResult(requestCode, resultCode, data);
+    }
+
     @Override
     protected String getMainComponentName() {
         return "mxOpportunity";

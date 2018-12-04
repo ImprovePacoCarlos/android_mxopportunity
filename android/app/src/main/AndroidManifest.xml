@@ -10,17 +10,8 @@
       android:icon="@mipmap/icon"
       android:allowBackup="false"
       android:theme="@style/AppTheme">
+       
 
-
-    <activity
-      android:name=".SplashActivity"
-      android:theme="@style/SplashTheme"
-      android:label="@string/app_name">
-    <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-        <category android:name="android.intent.category.LAUNCHER" />
-    </intent-filter>
-    </activity>
 
       <activity
         android:name=".MainActivity"
@@ -28,13 +19,19 @@
         android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
         android:windowSoftInputMode="adjustResize"
         android:exported="true">
-        
+
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
       </activity>
+
       <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+
+      <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+      <provider android:authorities="com.facebook.app.FacebookContentProvider334008933997439"
+          android:name="com.facebook.FacebookContentProvider"
+          android:exported="true" />
     </application>
 
 </manifest>

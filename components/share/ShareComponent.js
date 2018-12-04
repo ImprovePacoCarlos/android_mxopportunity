@@ -6,8 +6,10 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome';
 import IconEmail from 'react-native-vector-icons/MaterialCommunityIcons';
 import Share from 'react-native-share';
-// import { ShareDialog } from 'react-native-fbsdk';
+import { ShareDialog } from 'react-native-fbsdk';
 // create a component
+
+// Build up a shareable link.
 
 
 class ShareComponent extends Component {
@@ -20,7 +22,14 @@ class ShareComponent extends Component {
       social: null,
     };
 
-    this.state = { shareLinkContent };
+    const CompartirFace = {
+      contentType: 'link',
+      contentUrl: 'https://facebook.com',
+      contentDescription: 'Wow, check out this great site!',
+    };
+
+
+    this.state = { shareLinkContent, CompartirFace };
   }
 
 
@@ -33,6 +42,28 @@ class ShareComponent extends Component {
      });
    }
 
+   shareLinkWithShareDialog() {
+     const tmp = this;
+     ShareDialog.canShow(this.state.CompartirFace).then(
+       (canShow) => {
+         if (canShow) {
+           return ShareDialog.show(tmp.state.CompartirFace);
+         }
+       },
+     ).then(
+       (result) => {
+         if (result.isCancelled) {
+           console.log('Share cancelled');
+         } else {
+           console.log(`Share success with postId: ${result.postId}`);
+         }
+       },
+       (error) => {
+         console.log(`Share fail with error: ${error}`);
+       },
+     );
+   }
+
 
    render() {
      return (
@@ -40,11 +71,12 @@ class ShareComponent extends Component {
 
 
          <TouchableOpacity
-           onPress={() => {
-             setTimeout(() => {
-               this.share('facebook');
-             }, 300);
-           }}
+          //  onPress={() => {
+          //    setTimeout(() => {
+          //      this.share('facebook');
+          //    }, 300);
+          //  }}
+           onPress={this.shareLinkWithShareDialog.bind(this)}
            style={styles.sharemedia}
          >
            <Icon name="facebook-square" size={30} color="#222831" />
