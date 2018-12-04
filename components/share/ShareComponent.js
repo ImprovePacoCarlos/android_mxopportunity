@@ -71,11 +71,6 @@ class ShareComponent extends Component {
 
 
          <TouchableOpacity
-          //  onPress={() => {
-          //    setTimeout(() => {
-          //      this.share('facebook');
-          //    }, 300);
-          //  }}
            onPress={this.shareLinkWithShareDialog.bind(this)}
            style={styles.sharemedia}
          >

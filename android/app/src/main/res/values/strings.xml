@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">mxOpportunity</string>
     <string name="facebook_app_id">334008933997439</string>
+    <string name="fb_login_protocol_scheme">fb334008933997439</string>
+
 </resources>
