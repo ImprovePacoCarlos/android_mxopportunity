@@ -1,4 +1,3 @@
-// import liraries
 import React, { Component } from 'react';
 import {
   View, Text, StyleSheet, TouchableOpacity,
@@ -6,11 +5,11 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome';
 import IconEmail from 'react-native-vector-icons/MaterialCommunityIcons';
 import Share from 'react-native-share';
-import { ShareDialog } from 'react-native-fbsdk';
-// create a component
 
-// Build up a shareable link.
+const FBSDK = require('react-native-fbsdk');
 
+
+const { ShareDialog } = FBSDK;
 
 class ShareComponent extends Component {
   constructor(props) {
@@ -24,7 +23,7 @@ class ShareComponent extends Component {
 
     const CompartirFace = {
       contentType: 'link',
-      contentUrl: 'https://facebook.com',
+      contentUrl: 'https://www.facebook.com/',
       contentDescription: 'Wow, check out this great site!',
     };
 
@@ -44,24 +43,24 @@ class ShareComponent extends Component {
 
    shareLinkWithShareDialog() {
      const tmp = this;
-     ShareDialog.canShow(this.state.CompartirFace).then(
-       (canShow) => {
+     ShareDialog.canShow(this.state.CompartirFace)
+       .then((canShow) => {
          if (canShow) {
            return ShareDialog.show(tmp.state.CompartirFace);
          }
-       },
-     ).then(
-       (result) => {
-         if (result.isCancelled) {
-           console.log('Share cancelled');
-         } else {
-           console.log(`Share success with postId: ${result.postId}`);
-         }
-       },
-       (error) => {
-         console.log(`Share fail with error: ${error}`);
-       },
-     );
+       })
+       .then(
+         (result) => {
+           if (result.isCancelled) {
+             console.log('Share cancelled');
+           } else {
+             console.log('Share success');
+           }
+         },
+         (error) => {
+           console.log(`error: ${error}`);
+         },
+       );
    }
 
 
@@ -80,11 +79,7 @@ class ShareComponent extends Component {
 
 
          <TouchableOpacity
-           onPress={() => {
-             setTimeout(() => {
-               this.share('whatsapp');
-             }, 300);
-           }}
+           onPress={this.shareLinkWithShareDialog.bind(this)}
            style={styles.sharemedia}
          >
            <Icon name="whatsapp" size={30} color="#222831" />

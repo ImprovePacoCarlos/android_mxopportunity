@@ -4,10 +4,10 @@ import {
   View, Text, StyleSheet, ScrollView, Image,
 } from 'react-native';
 import { connect } from 'react-redux';
+import { NavigationEvents } from 'react-navigation';
 import HeaderPage from '../header/HeaderPage';
 import { actionGetArticuloSlug, actionGetArticulo } from '../../Store/Actions';
 import CardList from '../cards/CardList';
-
 // create a component
 class DetailPage extends Component {
   constructor() {
@@ -16,7 +16,12 @@ class DetailPage extends Component {
     };
   }
 
-  componentDidMount() {
+  // componentDidMount() {
+  //   this.props.getSlug(this.props.navigation.state.params.slug);
+  //   this.props.getArticulo();
+  // }
+
+  getArticuloSlug=() => {
     this.props.getSlug(this.props.navigation.state.params.slug);
     this.props.getArticulo();
   }
@@ -27,6 +32,9 @@ class DetailPage extends Component {
     console.log(this.props.articulo);
     return (
       <View style={styles.detailPage}>
+        <NavigationEvents
+          onWillFocus={() => { this.getArticuloSlug(); }}
+        />
         <HeaderPage {...this.props} data={article} />
         {article
           ? (
@@ -35,7 +43,7 @@ class DetailPage extends Component {
 
               <View style={styles.viewImage}>
                 <Image
-                  source={{ uri: article.imagenportada }}
+                  source={{ uri: article.imagen_destacada_uno }}
                   style={{
                     width: 400, height: 400, resizeMode: 'contain',
                   }}
@@ -45,31 +53,31 @@ class DetailPage extends Component {
 
                 <Text style={styles.titulo}>{article.titulo}</Text>
                 <Text style={styles.descripcion}>
-                  {article.cuerpo}
+                  {article.cuerpo_uno}
                 </Text>
               </View>
 
               <View style={styles.viewImage}>
                 <Image
-                  source={{ uri: article.imagenportada }}
+                  source={{ uri: article.imagen_destacada_dos }}
                   style={{
                     width: 400, height: 400, resizeMode: 'contain',
                   }}
                 />
                 <Text style={styles.descripcion}>
-                  {article.cuerpo}
+                  {article.cuerpo_dos}
                 </Text>
 
               </View>
 
               <View style={styles.publicidad}>
-                <Image source={{ uri: article.publicidad1 }} style={{ width: 170, height: 170, resizeMode: 'contain' }} />
-                <Image source={{ uri: article.publicidad2 }} style={{ width: 170, height: 170, resizeMode: 'contain' }} />
+                <Image source={{ uri: article.imagen_llamada_uno }} style={{ width: 170, height: 170, resizeMode: 'contain' }} />
+                <Image source={{ uri: article.imagen_llamada_dos }} style={{ width: 170, height: 170, resizeMode: 'contain' }} />
               </View>
               <Text>
                 {this.props.articulo.categoria}
               </Text>
-              <CardList data={this.props.articulo.articulos} navigation={this.props.navigation} />
+
             </ScrollView>
           ) : (
             <View style={styles.refreshContainer}>

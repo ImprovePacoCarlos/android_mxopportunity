@@ -9,9 +9,9 @@ const CardComponent = props => (
     <View style={styles.card}>
       <View style={{ padding: 0 }}>
         <Image
-          source={{ uri: props.imagenportada }}
+          source={{ uri: props.imagen_destacada_uno }}
           style={{
-            height: 120, width: 170, resizeMode: 'contain', padding: 0,
+            height: 120, width: 170, resizeMode: 'contain',
           }}
         />
       </View>

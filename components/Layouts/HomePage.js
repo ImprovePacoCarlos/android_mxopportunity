@@ -25,6 +25,7 @@ class HomePage extends Component {
 
   render() {
     const { navigation } = this.props;
+    console.log(this.props);
     return (
       <View style={styles.homepage}>
         <HeaderPage {...this.props} />
@@ -34,6 +35,11 @@ class HomePage extends Component {
   }
 }
 
+const styles = StyleSheet.create({
+  homepage: {
+    zIndex: 0,
+  },
+});
 
 const mapStateToProps = state => ({
   articulos: state.reducerArticulos,
@@ -50,9 +56,5 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-const styles = StyleSheet.create({
-  homepage: {
-    zIndex: 0,
-  },
-});
+
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

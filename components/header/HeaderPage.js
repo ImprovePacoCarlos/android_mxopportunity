@@ -22,7 +22,7 @@ class HeaderPage extends Component {
 
   render() {
     const { data, navigation } = this.props;
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <View>
         <View style={styles.header}>

@@ -1,4 +1,4 @@
-import { createDrawerNavigator, createAppContainer } from 'react-navigation';
+import { createDrawerNavigator } from 'react-navigation';
 import { Dimensions } from 'react-native';
 import HomePage from './components/Layouts/HomePage';
 import DetailPage from './components/Layouts/DetailPage';
@@ -20,7 +20,6 @@ const RutasPrincipales = createDrawerNavigator({
 },
 
 {
-
   contentComponent: DrawerNavigation,
   contentOptions: {
     activeTintColor: '#1d2323',

@@ -4,11 +4,16 @@ import React, { Component } from 'react';
 import {
   View, Text, StyleSheet, SafeAreaView, ScrollView,
 } from 'react-native';
-import { DrawerActions } from 'react-navigation-drawer';
+
 import { connect } from 'react-redux';
 import { NavigationActions } from 'react-navigation';
+import { DrawerActions } from 'react-navigation-drawer';
 import {
-  actionCargarPublicacionesStore, actionGetArticulosCategoria, actionGetEmpresa, actionGetEmpresaInfo, actionGetCategoriasEmpresa,
+  actionCargarPublicacionesStore,
+  actionGetArticulosCategoria,
+  actionGetEmpresa,
+  actionGetEmpresaInfo,
+  actionGetCategoriasEmpresa,
 } from '../../Store/Actions';
 
 
@@ -42,8 +47,8 @@ class DrawerNavigation extends Component {
           {categorias.categorias_empresa && categorias.categorias_empresa.length > 0
             ? categorias.categorias_empresa.map((c, key) => (
               <View style={styles.navSectionStyle} key={key}>
-                <Text style={styles.labelStyle} onPress={this.navigateToScreen('Home', { categoria: c.nombrecategoria, articulos })}>
-                  {c.nombrecategoria}
+                <Text style={styles.labelStyle} onPress={this.navigateToScreen('Home', { categoria: c.nombre_categoria, articulos })}>
+                  {c.nombre_categoria}
                 </Text>
               </View>
             ))
