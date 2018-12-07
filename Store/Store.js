@@ -4,17 +4,6 @@ import CONSTANTES from './Const';
 import funcionPrimaria from './Sagas/Sagas';
 
 
-const reducerPrueba = (state = [0], action) => {
-  switch (action.type) {
-    case CONSTANTES.PRUEBA_UNO:
-      return [...state, 1];
-    case CONSTANTES.PRUEBA_DOS:
-      return [...state, 2];
-    default:
-      return state;
-  }
-};
-
 const reducerArticulos = (state = {}, action) => {
   switch (action.type) {
     case CONSTANTES.GET_ARTICULOS_CATEGORIA:
@@ -25,6 +14,8 @@ const reducerArticulos = (state = {}, action) => {
       return { ...state, slug: action.slug };
     case CONSTANTES.GET_ARTICULO:
       return { ...state, articulo: action.articulo };
+    case CONSTANTES.GET_ARTICULO_DESTACADO:
+      return { ...state, articulosDestacados: action.articulos };
     default:
       return state;
   }
@@ -47,7 +38,6 @@ const reducerEmpresa = (state = {}, action) => {
 const sagaMiddleware = createSagaMiddleware();
 
 const reducers = combineReducers({
-  reducerPrueba,
   reducerArticulos,
   reducerEmpresa,
 });

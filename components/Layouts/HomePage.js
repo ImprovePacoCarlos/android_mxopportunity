@@ -6,7 +6,9 @@ import {
 import { connect } from 'react-redux';
 import HeaderPage from '../header/HeaderPage';
 import CategoryPage from './CategoryPage';
-import { actionCargarPublicacionesStore, actionGetArticulosCategoria, actionGetArticulo } from '../../Store/Actions';
+import {
+  actionCargarPublicacionesStore, actionGetArticulosCategoria, actionGetArticulo, actionGetArticulosDestacados,
+} from '../../Store/Actions';
 
 
 // create a component
@@ -18,18 +20,20 @@ class HomePage extends Component {
   }
 
   componentDidMount() {
-    this.props.navigation.state.params ? this.props.get_categoria(this.props.navigation.state.params.categoria) : this.props.get_categoria('Bienestar');
+    this.props.navigation.state.params ? this.props.get_categoria(this.props.navigation.state.params.categoria)
+      : this.props.get_categoria('Bienestar');
     this.props.get_articulos();
+    this.props.get_articulos_destacados();
     this.props.get_articulo();
   }
 
   render() {
     const { navigation } = this.props;
-    console.log(this.props);
+
     return (
       <View style={styles.homepage}>
         <HeaderPage {...this.props} />
-        <CategoryPage {...this.props} categoria={navigation.state.params ? navigation.state.params.categoria : 'Bienestar'} articulos={navigation.state.param ? navigation.state.params.articulos : this.props.articulos} />
+        <CategoryPage {...this.props} categoria={navigation.state.params ? navigation.state.params.categoria : 'Bienestar'} articulos={navigation.state.param ? navigation.state.params.articulos : this.props.articulos} articulosDestacados={this.props.articulos.articulosDestacados} />
       </View>
     );
   }
@@ -37,6 +41,7 @@ class HomePage extends Component {
 
 const styles = StyleSheet.create({
   homepage: {
+
     zIndex: 0,
   },
 });
@@ -50,6 +55,9 @@ const mapDispatchToProps = dispatch => ({
   },
   get_articulos: () => {
     dispatch(actionCargarPublicacionesStore());
+  },
+  get_articulos_destacados: () => {
+    dispatch(actionGetArticulosDestacados());
   },
   get_articulo: () => {
     dispatch(actionGetArticulo());

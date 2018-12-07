@@ -10,22 +10,6 @@ class Carrouselomponent extends Component {
     this.state = {
       position: 1,
       interval: null,
-      dataSource: [
-        {
-          titulo: 'Entra para ver tres curiosidades de Gijón',
-          imagen_destacada_uno: 'https://www.mxplanb.xyz/media/media/Salud.jpg',
-          slug: 'la-salud-no-tiene-porque-ser-un-lugar-frio-e-inhospito',
-
-        }, {
-          titulo: 'ESTA ES UNA PREBA DEL FUNCINAMIENTO DEL TITULO',
-          imagen_destacada_uno: 'https://www.mxplanb.xyz/media/media/huca_portada.jpg',
-          slug: 'mexico-un-destino-competitivo-para-los-negocios',
-        }, {
-          titulo: 'Title 3',
-          imagen_destacada_uno: 'https://www.mxplanb.xyz/media/media/huca_portada.jpg',
-          slug: 'entra-para-ver-3-curiosidades-de-gijon',
-        },
-      ],
     };
   }
 
@@ -34,7 +18,7 @@ class Carrouselomponent extends Component {
     this.setState({
       interval: setInterval(() => {
         this.setState({
-          position: this.state.position === (this.state.dataSource.length - 1) ? 0 : this.state.position + 1,
+          position: this.state.position === (this.props.articulosDestacados.length - 1) ? 0 : this.state.position + 1,
         });
       }, 2000),
     });
@@ -46,11 +30,12 @@ class Carrouselomponent extends Component {
 
 
   render() {
+    // console.log(this.props.articulosDestacados);
     return (
       <View style={styles.container}>
 
         <ImageSliderz
-          dataSource={this.state.dataSource}
+          dataSource={this.props.articulosDestacados}
           position={this.state.position}
           onPositionChanged={position => this.setState({ position })}
           height={250}

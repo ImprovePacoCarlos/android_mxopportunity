@@ -1,13 +1,14 @@
 // import liraries
 import React, { Component } from 'react';
 import {
-  View, Text, StyleSheet, ScrollView, Image,
+  View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, Linking,
 } from 'react-native';
 import { connect } from 'react-redux';
 import { NavigationEvents } from 'react-navigation';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import HeaderPage from '../header/HeaderPage';
 import { actionGetArticuloSlug, actionGetArticulo } from '../../Store/Actions';
-import CardList from '../cards/CardList';
+
 // create a component
 class DetailPage extends Component {
   constructor() {
@@ -16,10 +17,95 @@ class DetailPage extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   this.props.getSlug(this.props.navigation.state.params.slug);
-  //   this.props.getArticulo();
-  // }
+  handleUrl = (url) => {
+    Linking.canOpenURL(url).then((supported) => {
+      if (supported) {
+        Linking.openURL(url);
+      } else {
+        console.log(`Don't know how to open URI: ${url}`);
+      }
+    });
+  };
+
+  actionCallPublicidadUno=(llamada) => {
+    switch (llamada.llamada_accion_uno) {
+      case 'Llamar':
+        return (
+          <View style={styles.buttonStyleDos}>
+            <Icon name="whatsapp" size={20} color="#FFFFFF" />
+            <Text style={styles.textStyle}>
+              {llamada.url_llamada_uno}
+            </Text>
+          </View>
+        );
+      case 'Visitar':
+        return (
+          <TouchableOpacity
+            style={styles.buttonStyle}
+            onPress={() => { this.handleUrl(llamada.url_llamada_uno); }}
+          >
+            <Icon name="whatsapp" size={20} color="#FFFFFF" />
+            <Text style={styles.textStyle}>Visitar</Text>
+          </TouchableOpacity>
+        );
+      case 'Comprar':
+        return (
+          <TouchableOpacity
+            style={styles.buttonStyle}
+            onPress={() => { this.handleUrl(llamada.url_llamada_uno); }}
+          >
+            <Icon name="whatsapp" size={20} color="#FFFFFF" />
+            <Text style={styles.textStyle}>
+              Comprar
+            </Text>
+          </TouchableOpacity>
+        );
+      default:
+        return null;
+    }
+  }
+
+  actionCallPublicidadDos=(llamada) => {
+    switch (llamada.llamada_accion_dos) {
+      case 'Llamar':
+        return (
+          <View style={styles.buttonStyleDos}>
+            <Icon name="whatsapp" size={20} color="#FFFFFF" />
+            <Text style={styles.textStyle}>
+              {llamada.url_llamada_dos}
+            </Text>
+          </View>
+        );
+      case 'Visitar':
+        return (
+          <TouchableOpacity
+            style={styles.buttonStyle}
+            onPress={() => { this.handleUrl(llamada.url_llamada_dos); }}
+          >
+            <Icon name="whatsapp" size={20} color="#FFFFFF" />
+            <Text style={styles.textStyle}>
+              Visitar
+            </Text>
+          </TouchableOpacity>
+
+        );
+      case 'Comprar':
+        return (
+          <TouchableOpacity
+            style={styles.buttonStyle}
+            onPress={() => { this.handleUrl(llamada.url_llamada_dos); }}
+          >
+            <Text style={styles.textStyle}>
+              <Icon name="whatsapp" size={20} color="#FFFFFF" />
+              Comprar
+            </Text>
+          </TouchableOpacity>
+        );
+      default:
+        return null;
+    }
+  }
+
 
   getArticuloSlug=() => {
     this.props.getSlug(this.props.navigation.state.params.slug);
@@ -27,7 +113,6 @@ class DetailPage extends Component {
   }
 
   render() {
-    const { data } = this.state;
     const article = this.props.articulo.articulo;
     console.log(this.props.articulo);
     return (
@@ -45,8 +130,9 @@ class DetailPage extends Component {
                 <Image
                   source={{ uri: article.imagen_destacada_uno }}
                   style={{
-                    width: 400, height: 400, resizeMode: 'contain',
+                    width: 400, height: 300, resizeMode: 'contain',
                   }}
+
                 />
               </View>
               <View>
@@ -61,8 +147,9 @@ class DetailPage extends Component {
                 <Image
                   source={{ uri: article.imagen_destacada_dos }}
                   style={{
-                    width: 400, height: 400, resizeMode: 'contain',
+                    width: 400, height: 300, resizeMode: 'contain',
                   }}
+
                 />
                 <Text style={styles.descripcion}>
                   {article.cuerpo_dos}
@@ -71,12 +158,27 @@ class DetailPage extends Component {
               </View>
 
               <View style={styles.publicidad}>
-                <Image source={{ uri: article.imagen_llamada_uno }} style={{ width: 170, height: 170, resizeMode: 'contain' }} />
-                <Image source={{ uri: article.imagen_llamada_dos }} style={{ width: 170, height: 170, resizeMode: 'contain' }} />
+                <View>
+                  <Image
+                    source={{ uri: article.imagen_llamada_uno }}
+                    style={{
+                      width: 170, height: 170, resizeMode: 'contain',
+                    }}
+                  />
+                  {this.actionCallPublicidadUno(article)}
+                </View>
+                <View>
+                  <Image
+                    source={{ uri: article.imagen_llamada_dos }}
+                    style={{
+                      width: 170, height: 170, resizeMode: 'contain',
+                    }}
+                  />
+                  {this.actionCallPublicidadUno(article)}
+                </View>
+
               </View>
-              <Text>
-                {this.props.articulo.categoria}
-              </Text>
+
 
             </ScrollView>
           ) : (
@@ -146,6 +248,42 @@ const styles = StyleSheet.create({
   reload: {
     height: 30,
     width: 30,
+  },
+
+  textStyle: {
+    fontSize: 14,
+    color: '#ffffff',
+    textAlign: 'center',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    letterSpacing: 1,
+    marginLeft: 4,
+
+  },
+
+  buttonStyle: {
+    borderRadius: 5,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    top: 130,
+    left: 50,
+    padding: 5,
+    backgroundColor: '#222831',
+  },
+  buttonStyleDos: {
+    borderRadius: 5,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    top: 130,
+    padding: 5,
+    backgroundColor: '#222831',
   },
 });
 

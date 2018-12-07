@@ -6,73 +6,31 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import IconEmail from 'react-native-vector-icons/MaterialCommunityIcons';
 import Share from 'react-native-share';
 
-const FBSDK = require('react-native-fbsdk');
-
-
-const { ShareDialog } = FBSDK;
-
-class ShareComponent extends Component {
+class ShareComponentApp extends Component {
   constructor(props) {
     super(props);
-    const shareLinkContent = {
-      title: 'React Native',
-      message: 'Hola mundo',
-      url: 'www.planb.com.mx',
-      social: null,
-    };
-
-    const CompartirFace = {
-      contentType: 'link',
-      contentUrl: 'https://oblador.github.io/react-native-vector-icons/',
-      contentDescription: 'Wow, check out this great site!',
-      quote: this.props.articulo.titulo,
-    };
-
-
-    this.state = { shareLinkContent, CompartirFace };
+    this.state = { };
   }
-
 
    share= (social) => {
      Share.shareSingle({
        title: 'React Native',
-       message: 'Hola mundo',
+       message: 'Visita nuestro sitio web',
        url: 'www.planb.com.mx',
        social,
      });
    }
 
-   shareLinkWithShareDialog() {
-     const tmp = this;
-     ShareDialog.canShow(this.state.CompartirFace)
-       .then((canShow) => {
-         if (canShow) {
-           return ShareDialog.show(tmp.state.CompartirFace);
-         }
-       })
-       .then(
-         (result) => {
-           if (result.isCancelled) {
-             console.log('Share cancelled');
-           } else {
-             console.log('Share success');
-           }
-         },
-         (error) => {
-           console.log(`error: ${error}`);
-         },
-       );
-   }
-
 
    render() {
-     console.log(this.props.articulo.imagen_destacada_uno);
      return (
        <View style={styles.container}>
-
-
          <TouchableOpacity
-           onPress={this.shareLinkWithShareDialog.bind(this)}
+           onPress={() => {
+             setTimeout(() => {
+               this.share('facebook');
+             }, 300);
+           }}
            style={styles.sharemedia}
          >
            <Icon name="facebook-square" size={30} color="#222831" />
@@ -151,4 +109,4 @@ const styles = StyleSheet.create({
 });
 
 // make this component available to the app
-export default ShareComponent;
+export default ShareComponentApp;

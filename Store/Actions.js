@@ -12,6 +12,11 @@ export const actionGetArticulos = () => ({
   type: CONSTANTES.GET_ARTICULOS,
 });
 
+export const actionGetArticulosDestacados = articulos => ({
+  type: CONSTANTES.GET_ARTICULO_DESTACADO,
+  articulos,
+});
+
 
 export const actionGetArticulosCategoria = categoria => ({
   type: CONSTANTES.GET_ARTICULOS_CATEGORIA,

@@ -5,6 +5,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ShareComponent from '../share/ShareComponent';
+import ShareComponentApp from '../share/ShareComponentApp';
 
 
 class HeaderPage extends Component {
@@ -20,6 +21,7 @@ class HeaderPage extends Component {
     this.setState({ show: !show });
   }
 
+
   render() {
     const { data, navigation } = this.props;
     // console.log(this.props);
@@ -32,17 +34,25 @@ class HeaderPage extends Component {
             <Icon name="md-menu" size={30} color="#222831" />
           </TouchableOpacity>
 
-          <Image style={styles.drawerImage} source={require('../../assets/images/logo.png')} />
+          <TouchableOpacity onPress={() => { navigation.navigate('Home'); }}>
+            <Image style={styles.drawerImage} source={require('../../assets/images/logo.png')} />
+          </TouchableOpacity>
+
 
           {
            navigation.state.routeName !== 'Detalle'
              ? <TouchableOpacity onPress={() => { this.toggleshareButton(); }}><Icon name="md-share" style={styles.icon} /></TouchableOpacity>
+
              : <TouchableOpacity onPress={() => { this.toggleshareButton(); }}><Icon name="md-share" style={styles.icondos} /></TouchableOpacity>
           }
         </View>
-        {
-          this.state.show ? <ShareComponent articulo={data} /> : null
 
+        {
+          this.state.show && navigation.state.routeName === 'Detalle' ? <ShareComponent articulo={data} /> : null
+        }
+
+        {
+          this.state.show && navigation.state.routeName !== 'Detalle' ? <ShareComponentApp /> : null
         }
 
       </View>

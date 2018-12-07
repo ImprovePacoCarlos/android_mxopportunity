@@ -3,16 +3,22 @@ import {
 } from 'redux-saga/effects';
 import CONSTANTES from '../Const';
 import {
-  actionCargarPublicacionesStore, actionGetArticulo, actionGetEmpresaInfo, actionGetCategoriasEmpresa,
+  actionCargarPublicacionesStore, actionGetArticulo, actionGetEmpresaInfo, actionGetCategoriasEmpresa, actionGetArticulosDestacados,
 } from '../Actions';
 
 
 const URL = 'https://apiplanb.xyz';
-const ConsultaArticulosCategoria = categoria => fetch(`${URL}/publicar/filtroespecialarticulo/?q=${categoria}`,
-// const ConsultaArticulosCategoria = categoria => fetch(`${URL}/article/articulofiltro/`,
+// const ConsultaArticulosCategoria = categoria => fetch(`${URL}/publicar/filtroespecialarticulo/?q=${categoria}`,
+const ConsultaArticulosCategoria = categoria => fetch(`${URL}/publicar/filtroespecialarticulo/`,
   {
     method: 'GET',
 
+  }).then(response => response.json());
+
+
+const ArticulosDestacados = () => fetch(`${URL}/publicar/filtroespecialarticulo/?portada=True`,
+  {
+    method: 'GET',
   }).then(response => response.json());
 
 
@@ -20,9 +26,11 @@ function* generadoraArticulosCategoria() {
   try {
     const categoria = yield select(state => state.reducerArticulos);
     const articulosCategoria = yield call(ConsultaArticulosCategoria, categoria.categoria);
-    yield put(actionCargarPublicacionesStore(articulosCategoria.results));
-    console.log(categoria);
-    console.log(articulosCategoria.results);
+    yield put(actionCargarPublicacionesStore(articulosCategoria));
+
+    // Funcion para devolver todos los articulos que son destacados.
+    const articulosDestacados = yield call(ArticulosDestacados);
+    yield put(actionGetArticulosDestacados(articulosDestacados));
   } catch (error) {
     console.log(error);
   }
@@ -39,23 +47,9 @@ function* generadoraArticuloSlug() {
   try {
     const slug = yield select(state => state.reducerArticulos);
     const articuloCategoria = yield call(ConsultaArticuloSlug, slug.slug);
-    yield put(actionGetArticulo(articuloCategoria.results[0]));
+    yield put(actionGetArticulo(articuloCategoria[0]));
     console.log(slug.slug);
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-
-const descargarArticulos = () => fetch(`${URL}/publicar/filtroespecialarticulo/`,
-  {
-    method: 'GET',
-  }).then(response => response.json());
-
-function* generadoraArticulos() {
-  try {
-    const articulos = yield call(descargarArticulos);
-    yield put(actionGetArticulo(articulos));
+    console.log(articuloCategoria);
   } catch (error) {
     console.log(error);
   }
@@ -89,7 +83,7 @@ function* generadoraEmpresa() {
 export default function* funcionPrimaria() {
   yield takeEvery(CONSTANTES.GET_ARTICULOS_CATEGORIA, generadoraArticulosCategoria);
   yield takeEvery(CONSTANTES.GET_ARTICULO_SLUG, generadoraArticuloSlug);
-  yield takeEvery(CONSTANTES.GET_ARTICULOS, generadoraArticulos);
+  // yield takeEvery(CONSTANTES.GET_ARTICULO_DESTACADO, generadoraArticulosDestacados);
 
 
   yield takeEvery(CONSTANTES.GET_EMPRESA, generadoraEmpresa);

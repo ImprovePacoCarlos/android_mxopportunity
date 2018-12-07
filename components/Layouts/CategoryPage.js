@@ -25,9 +25,8 @@ class CategoryPage extends Component {
       <ScrollView style={styles.container}>
         <View>
           <Text style={styles.titulo}>{categoria}</Text>
-          { categoria === 'Bienestar' ? <Carrouselomponent visible={visible} navigation={this.props.navigation} data={articulos.articulos} /> : null}
+          {this.props.articulosDestacados && categoria === 'Bienestar' ? <Carrouselomponent visible={visible} navigation={this.props.navigation} data={articulos.articulos} articulosDestacados={this.props.articulosDestacados} /> : null}
         </View>
-
         <CardList data={articulos.articulos} navigation={this.props.navigation} />
       </ScrollView>
     );

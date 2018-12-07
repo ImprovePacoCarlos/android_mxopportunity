@@ -82,6 +82,8 @@ const styles = StyleSheet.create({
     letterSpacing: 2,
     fontWeight: '300',
     fontSize: 14,
+    color: '#222831',
+
 
   },
   sectionHeadingStyle: {
