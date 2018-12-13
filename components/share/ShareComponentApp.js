@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import IconEmail from 'react-native-vector-icons/MaterialCommunityIcons';
 import Share from 'react-native-share';
 
+
 class ShareComponentApp extends Component {
   constructor(props) {
     super(props);
@@ -14,7 +15,7 @@ class ShareComponentApp extends Component {
 
    share= (social) => {
      Share.shareSingle({
-       title: 'React Native',
+       title: 'MXPLanB',
        message: 'Visita nuestro sitio web',
        url: 'www.planb.com.mx',
        social,

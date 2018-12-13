@@ -18,7 +18,7 @@ const CardComponent = props => (
         />
       </View>
       <View style={styles.header_noticia}>
-        <Text style={styles.titulo_articulo}>{props.titulo}</Text>
+        <Text numberOfLines={2} style={styles.titulo_articulo}>{props.titulo}</Text>
       </View>
     </View>
   </TouchableOpacity>

@@ -25,7 +25,7 @@ class CategoryPage extends Component {
       <ScrollView style={styles.container}>
         <View>
           <Text style={styles.titulo}>{categoria}</Text>
-          {this.props.articulosDestacados && categoria === 'Bienestar' ? <Carrouselomponent visible={visible} navigation={this.props.navigation} data={articulos.articulos} articulosDestacados={this.props.articulosDestacados} /> : null}
+          {this.props.articulosDestacados && categoria === 'ULTIMO' ? <Carrouselomponent visible={visible} navigation={this.props.navigation} data={articulos.articulos} articulosDestacados={this.props.articulosDestacados} /> : null}
         </View>
         <CardList data={articulos.articulos} navigation={this.props.navigation} />
       </ScrollView>
@@ -42,11 +42,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffff',
   },
   titulo: {
-    fontSize: 20,
-    paddingVertical: 20,
-    textAlign: 'center',
+    fontFamily: 'Helvetica-Bold',
+    fontSize: 25,
+    paddingVertical: 5,
+    paddingHorizontal: 15,
+    textAlign: 'left',
     fontWeight: 'bold',
-    color: '#252a34',
+    color: '#FFFFFF',
+    backgroundColor: '#252a34',
+    width: '80%',
+    borderRadius: 3,
+    marginBottom: 3,
   },
   articulos: {
     flex: 1,

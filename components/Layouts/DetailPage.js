@@ -5,7 +5,8 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import { NavigationEvents } from 'react-navigation';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import IconMaterial from 'react-native-vector-icons/MaterialCommunityIcons';
 import HeaderPage from '../header/HeaderPage';
 import { actionGetArticuloSlug, actionGetArticulo } from '../../Store/Actions';
 
@@ -32,7 +33,7 @@ class DetailPage extends Component {
       case 'Llamar':
         return (
           <View style={styles.buttonStyleDos}>
-            <Icon name="whatsapp" size={20} color="#FFFFFF" />
+            <Icon name="mobile-alt" size={20} color="#FFFFFF" />
             <Text style={styles.textStyle}>
               {llamada.url_llamada_uno}
             </Text>
@@ -44,7 +45,7 @@ class DetailPage extends Component {
             style={styles.buttonStyle}
             onPress={() => { this.handleUrl(llamada.url_llamada_uno); }}
           >
-            <Icon name="whatsapp" size={20} color="#FFFFFF" />
+            <IconMaterial name="web" size={20} color="#FFFFFF" />
             <Text style={styles.textStyle}>Visitar</Text>
           </TouchableOpacity>
         );
@@ -54,7 +55,7 @@ class DetailPage extends Component {
             style={styles.buttonStyle}
             onPress={() => { this.handleUrl(llamada.url_llamada_uno); }}
           >
-            <Icon name="whatsapp" size={20} color="#FFFFFF" />
+            <IconMaterial name="cash" size={20} color="#FFFFFF" />
             <Text style={styles.textStyle}>
               Comprar
             </Text>
@@ -70,7 +71,7 @@ class DetailPage extends Component {
       case 'Llamar':
         return (
           <View style={styles.buttonStyleDos}>
-            <Icon name="whatsapp" size={20} color="#FFFFFF" />
+            <Icon name="mobile-alt" size={20} color="#FFFFFF" />
             <Text style={styles.textStyle}>
               {llamada.url_llamada_dos}
             </Text>
@@ -200,27 +201,28 @@ class DetailPage extends Component {
 const styles = StyleSheet.create({
   detailPage: {
     zIndex: 0,
+    fontFamily: 'Helvetica',
   },
   container: {
     display: 'flex',
     flexDirection: 'column',
     backgroundColor: '#ffff',
     marginBottom: 100,
-
-
   },
   titulo: {
-    fontSize: 18,
-    fontWeight: 'bold',
+    fontFamily: 'Helvetica-Bold',
+    fontSize: 20,
     letterSpacing: 2,
     padding: 5,
   },
   descripcion: {
-    fontSize: 14,
+    fontFamily: 'Helvetica',
+    fontSize: 16,
     letterSpacing: 1,
-    lineHeight: 20,
+    lineHeight: 28,
     fontWeight: 'normal',
-    padding: 5,
+    padding: 8,
+
   },
   publicidad: {
     marginVertical: 20,
@@ -239,7 +241,6 @@ const styles = StyleSheet.create({
 
   },
   refreshContainer: {
-
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -251,7 +252,8 @@ const styles = StyleSheet.create({
   },
 
   textStyle: {
-    fontSize: 14,
+    fontFamily: 'Helvetica',
+    fontSize: 16,
     color: '#ffffff',
     textAlign: 'center',
     display: 'flex',
@@ -259,6 +261,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     letterSpacing: 1,
     marginLeft: 4,
+
 
   },
 

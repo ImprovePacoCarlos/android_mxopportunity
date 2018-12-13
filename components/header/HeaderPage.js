@@ -3,14 +3,15 @@ import React, { Component } from 'react';
 import {
   StyleSheet, Image, TouchableOpacity, View,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import IconDos from 'react-native-vector-icons/Ionicons';
 import ShareComponent from '../share/ShareComponent';
 import ShareComponentApp from '../share/ShareComponentApp';
 
 
 class HeaderPage extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       show: false,
     };
@@ -31,7 +32,7 @@ class HeaderPage extends Component {
           <TouchableOpacity
             onPress={() => navigation.openDrawer()}
           >
-            <Icon name="md-menu" size={30} color="#222831" />
+            <IconDos name="md-menu" size={30} color="#222831" />
           </TouchableOpacity>
 
           <TouchableOpacity onPress={() => { navigation.navigate('Home'); }}>
@@ -41,19 +42,16 @@ class HeaderPage extends Component {
 
           {
            navigation.state.routeName !== 'Detalle'
-             ? <TouchableOpacity onPress={() => { this.toggleshareButton(); }}><Icon name="md-share" style={styles.icon} /></TouchableOpacity>
+             ? null
 
-             : <TouchableOpacity onPress={() => { this.toggleshareButton(); }}><Icon name="md-share" style={styles.icondos} /></TouchableOpacity>
+             : <TouchableOpacity onPress={() => { this.toggleshareButton(); }}><Icon name="share-alt-square" style={styles.icondos} /></TouchableOpacity>
           }
         </View>
 
         {
-          this.state.show && navigation.state.routeName === 'Detalle' ? <ShareComponent articulo={data} /> : null
+          this.state.show ? <ShareComponent articulo={data} /> : null
         }
 
-        {
-          this.state.show && navigation.state.routeName !== 'Detalle' ? <ShareComponentApp /> : null
-        }
 
       </View>
 
@@ -74,8 +72,8 @@ const styles = StyleSheet.create({
     color: 'black',
   },
   icondos: {
-    fontSize: 30,
-    color: '#00adb5',
+    fontSize: 40,
+    color: 'black',
   },
   drawerImage: {
     height: 60,

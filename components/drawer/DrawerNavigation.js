@@ -2,12 +2,13 @@
 // import liraries
 import React, { Component } from 'react';
 import {
-  View, Text, StyleSheet, SafeAreaView, ScrollView,
+  View, Text, StyleSheet, SafeAreaView, ScrollView, TouchableHighlight,
 } from 'react-native';
 
 import { connect } from 'react-redux';
 import { NavigationActions } from 'react-navigation';
 import { DrawerActions } from 'react-navigation-drawer';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import {
   actionCargarPublicacionesStore,
   actionGetArticulosCategoria,
@@ -46,18 +47,26 @@ class DrawerNavigation extends Component {
         <ScrollView>
           {categorias.categorias_empresa && categorias.categorias_empresa.length > 0
             ? categorias.categorias_empresa.map((c, key) => (
-              <View style={styles.navSectionStyle} key={key}>
-                <Text style={styles.labelStyle} onPress={this.navigateToScreen('Home', { categoria: c.nombre_categoria, articulos })}>
-                  {c.nombre_categoria}
-                </Text>
-              </View>
+              <TouchableHighlight key={key} underlayColor="#eeeeee" onPress={this.navigateToScreen('Home', { categoria: c.nombre_categoria, articulos })}>
+                <View style={styles.navSectionStyle}>
+                  <Icon name="chevron-right" size={14} color="#222831" />
+                  <Text style={styles.labelStyle}>
+                    {c.nombre_categoria}
+                  </Text>
+                </View>
+
+              </TouchableHighlight>
+
             ))
             : (
-              <View style={styles.navSectionStyle}>
-                <Text style={styles.labelStyle} onPress={this.navigateToScreen('Home', { categoria: 'Bienestar' })}>
-                  Bienestar
-                </Text>
-              </View>
+              <TouchableHighlight underlayColor="#eeeeee" onPress={this.navigateToScreen('Home', { categoria: 'ULTIMO' })}>
+                <View style={styles.navSectionStyle}>
+                  <Text style={styles.labelStyle}>
+                  LO ULTIMO
+                  </Text>
+                </View>
+              </TouchableHighlight>
+
             )
       }
         </ScrollView>
@@ -75,15 +84,18 @@ const styles = StyleSheet.create({
   navSectionStyle: {
     opacity: 1,
     borderBottomWidth: 1,
-    padding: 10,
+    padding: 8,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   labelStyle: {
     opacity: 1,
     letterSpacing: 2,
-    fontWeight: '300',
     fontSize: 14,
     color: '#222831',
-
+    fontFamily: 'Helvetica',
+    marginLeft: 10,
 
   },
   sectionHeadingStyle: {

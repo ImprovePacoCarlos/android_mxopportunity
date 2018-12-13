@@ -35,8 +35,8 @@ class ShareComponent extends Component {
 
    share= (social) => {
      Share.shareSingle({
-       title: 'React Native',
-       message: 'Hola mundo',
+       title: this.props.articulo.titulo,
+       message: this.props.articulo.titulo,
        url: 'www.planb.com.mx',
        social,
      });

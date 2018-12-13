@@ -21,7 +21,7 @@ class HomePage extends Component {
 
   componentDidMount() {
     this.props.navigation.state.params ? this.props.get_categoria(this.props.navigation.state.params.categoria)
-      : this.props.get_categoria('Bienestar');
+      : this.props.get_categoria('ULTIMO');
     this.props.get_articulos();
     this.props.get_articulos_destacados();
     this.props.get_articulo();
@@ -33,7 +33,7 @@ class HomePage extends Component {
     return (
       <View style={styles.homepage}>
         <HeaderPage {...this.props} />
-        <CategoryPage {...this.props} categoria={navigation.state.params ? navigation.state.params.categoria : 'Bienestar'} articulos={navigation.state.param ? navigation.state.params.articulos : this.props.articulos} articulosDestacados={this.props.articulos.articulosDestacados} />
+        <CategoryPage {...this.props} categoria={navigation.state.params ? navigation.state.params.categoria : 'ULTIMO'} articulos={navigation.state.param ? navigation.state.params.articulos : this.props.articulos} articulosDestacados={this.props.articulos.articulosDestacados} />
       </View>
     );
   }
