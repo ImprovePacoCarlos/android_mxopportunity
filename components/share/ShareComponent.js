@@ -8,7 +8,6 @@ import Share from 'react-native-share';
 
 const FBSDK = require('react-native-fbsdk');
 
-
 const { ShareDialog } = FBSDK;
 
 class ShareComponent extends Component {
@@ -17,13 +16,13 @@ class ShareComponent extends Component {
     const shareLinkContent = {
       title: 'React Native',
       message: 'Hola mundo',
-      url: 'www.planb.com.mx',
+      url: 'http://planb.com.mx/',
       social: null,
     };
 
     const CompartirFace = {
       contentType: 'link',
-      contentUrl: 'https://oblador.github.io/react-native-vector-icons/',
+      contentUrl: 'www.planb.com.mx',
       contentDescription: 'Wow, check out this great site!',
       quote: this.props.articulo.titulo,
     };
@@ -37,7 +36,7 @@ class ShareComponent extends Component {
      Share.shareSingle({
        title: this.props.articulo.titulo,
        message: this.props.articulo.titulo,
-       url: 'www.planb.com.mx',
+       url: 'http://planb.com.mx/',
        social,
      });
    }
@@ -66,7 +65,6 @@ class ShareComponent extends Component {
 
 
    render() {
-     console.log(this.props.articulo.imagen_destacada_uno);
      return (
        <View style={styles.container}>
 
