@@ -8,8 +8,8 @@ import {
 
 
 const URL = 'https://apiplanb.xyz';
-// const ConsultaArticulosCategoria = categoria => fetch(`${URL}/publicar/filtroespecialarticulo/?q=${categoria}`,
-const ConsultaArticulosCategoria = categoria => fetch(`${URL}/publicar/filtroespecialarticulo/`,
+const ConsultaArticulosCategoria = categoria => fetch(`${URL}/publicar/filtroespecialarticulo/?q=${categoria}`,
+// const ConsultaArticulosCategoria = categoria => fetch(`${URL}/publicar/filtroespecialarticulo/`,
   {
     method: 'GET',
 

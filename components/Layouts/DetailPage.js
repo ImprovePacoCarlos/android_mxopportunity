@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import {
   View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, Linking,
 } from 'react-native';
+//import Video from 'react-native-video';
 import { connect } from 'react-redux';
 import { NavigationEvents } from 'react-navigation';
 import Icon from 'react-native-vector-icons/FontAwesome5';
@@ -15,7 +16,27 @@ class DetailPage extends Component {
   constructor() {
     super();
     this.state = {
+      loading: true,
+      paused: false,
     };
+  }
+
+  onBuffer = ({ isBuffering }) => {
+    this.setState({
+      loading: isBuffering,
+    });
+  }
+
+  onLoad = () => {
+    this.setState({
+      loading: false,
+    });
+  }
+
+  playPause = () => {
+    this.setState({
+      paused: !this.state.paused,
+    });
   }
 
   handleUrl = (url) => {
@@ -144,19 +165,43 @@ class DetailPage extends Component {
                 </Text>
               </View>
 
-              <View style={styles.viewImage}>
-                <Image
-                  source={{ uri: article.imagen_destacada_dos }}
-                  style={{
-                    width: 400, height: 300, resizeMode: 'contain',
-                  }}
+              {
+              article.imagen_destacada_dos
+                ? (
+                  <View style={styles.viewImage}>
+                    <Image
+                      source={{ uri: article.imagen_destacada_dos }}
+                      style={{
+                        width: 400, height: 300, resizeMode: 'contain',
+                      }}
+                    />
+                    <Text style={styles.descripcion}>
+                      {article.cuerpo_dos}
+                    </Text>
 
-                />
-                <Text style={styles.descripcion}>
-                  {article.cuerpo_dos}
-                </Text>
+                  </View>
+                )
+                : null
+            }
 
-              </View>
+
+              {
+              article.video_tipo === 'sin video'
+                ? (
+                  <View style={styles.article_detail_urlvideo}>
+
+                    {/* <Video
+                      source={{ uri: 'https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4' }}
+                      style={styles.video}
+                      resizeMode="contain"
+                      onBuffer={this.onBuffer}
+                      onLoad={this.onLoad}
+                      paused={this.state.paused}
+                    />
+                  </View> */}
+                )
+                : null
+            }
 
               <View style={styles.publicidad}>
                 <View>
@@ -287,6 +332,16 @@ const styles = StyleSheet.create({
     top: 130,
     padding: 5,
     backgroundColor: '#222831',
+  },
+  article_detail_urlvideo: {
+
+  },
+  video: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    top: 0,
   },
 });
 
