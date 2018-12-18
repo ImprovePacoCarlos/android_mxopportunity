@@ -17,6 +17,8 @@
     "react-native-slideshow": "^1.0.1",
     "react-native-splash-screen": "^3.1.1",
     "react-native-vector-icons": "^6.1.0",
+    "react-native-video": "^2.3.1",
+    "react-native-youtube": "^1.1.0",
     "react-navigation": "^3.0.2",
     "react-redux": "^5.1.1",
     "redux": "^4.0.1",

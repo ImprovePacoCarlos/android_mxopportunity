@@ -3,40 +3,22 @@ import React, { Component } from 'react';
 import {
   View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, Linking,
 } from 'react-native';
-//import Video from 'react-native-video';
+// import Video from 'react-native-video';
 import { connect } from 'react-redux';
 import { NavigationEvents } from 'react-navigation';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import IconMaterial from 'react-native-vector-icons/MaterialCommunityIcons';
 import HeaderPage from '../header/HeaderPage';
 import { actionGetArticuloSlug, actionGetArticulo } from '../../Store/Actions';
+import VideoComponent from '../video/VideoComponent';
 
 // create a component
 class DetailPage extends Component {
   constructor() {
     super();
     this.state = {
-      loading: true,
-      paused: false,
+
     };
-  }
-
-  onBuffer = ({ isBuffering }) => {
-    this.setState({
-      loading: isBuffering,
-    });
-  }
-
-  onLoad = () => {
-    this.setState({
-      loading: false,
-    });
-  }
-
-  playPause = () => {
-    this.setState({
-      paused: !this.state.paused,
-    });
   }
 
   handleUrl = (url) => {
@@ -70,7 +52,7 @@ class DetailPage extends Component {
             <Text style={styles.textStyle}>Visitar</Text>
           </TouchableOpacity>
         );
-      case 'Comprar':
+      case 'Compar':
         return (
           <TouchableOpacity
             style={styles.buttonStyle}
@@ -104,21 +86,21 @@ class DetailPage extends Component {
             style={styles.buttonStyle}
             onPress={() => { this.handleUrl(llamada.url_llamada_dos); }}
           >
-            <Icon name="whatsapp" size={20} color="#FFFFFF" />
+            <IconMaterial name="web" size={20} color="#FFFFFF" />
             <Text style={styles.textStyle}>
               Visitar
             </Text>
           </TouchableOpacity>
 
         );
-      case 'Comprar':
+      case 'Compar':
         return (
           <TouchableOpacity
             style={styles.buttonStyle}
             onPress={() => { this.handleUrl(llamada.url_llamada_dos); }}
           >
             <Text style={styles.textStyle}>
-              <Icon name="whatsapp" size={20} color="#FFFFFF" />
+              <IconMaterial name="cash" size={20} color="#FFFFFF" />
               Comprar
             </Text>
           </TouchableOpacity>
@@ -143,6 +125,7 @@ class DetailPage extends Component {
           onWillFocus={() => { this.getArticuloSlug(); }}
         />
         <HeaderPage {...this.props} data={article} />
+
         {article
           ? (
 
@@ -186,44 +169,54 @@ class DetailPage extends Component {
 
 
               {
-              article.video_tipo === 'sin video'
+              article.video_tipo !== 'sin video'
                 ? (
-                  <View style={styles.article_detail_urlvideo}>
+                  <VideoComponent urlvideo={article.urlvideo} />
 
-                    {/* <Video
-                      source={{ uri: 'https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4' }}
-                      style={styles.video}
-                      resizeMode="contain"
-                      onBuffer={this.onBuffer}
-                      onLoad={this.onLoad}
-                      paused={this.state.paused}
-                    />
-                  </View> */}
                 )
                 : null
             }
 
-              <View style={styles.publicidad}>
-                <View>
-                  <Image
-                    source={{ uri: article.imagen_llamada_uno }}
-                    style={{
-                      width: 170, height: 170, resizeMode: 'contain',
-                    }}
-                  />
-                  {this.actionCallPublicidadUno(article)}
-                </View>
-                <View>
-                  <Image
-                    source={{ uri: article.imagen_llamada_dos }}
-                    style={{
-                      width: 170, height: 170, resizeMode: 'contain',
-                    }}
-                  />
-                  {this.actionCallPublicidadUno(article)}
-                </View>
 
-              </View>
+              { article.llamada_accion_uno !== 'Sinllamada' && article.llamada_accion_dos !== 'Sinllamada'
+                ? (
+                  <View style={styles.publicidad}>
+                    <View>
+                      <Image
+                        source={{ uri: article.imagen_llamada_uno }}
+                        style={{
+                          width: 170, height: 170, resizeMode: 'contain',
+                        }}
+                      />
+                      {this.actionCallPublicidadUno(article)}
+                    </View>
+                    <View>
+                      <Image
+                        source={{ uri: article.imagen_llamada_dos }}
+                        style={{
+                          width: 170, height: 170, resizeMode: 'contain',
+                        }}
+                      />
+                      {this.actionCallPublicidadDos(article)}
+                    </View>
+                  </View>
+                )
+                : (
+                  <View style={styles.publicidad}>
+                    <View>
+                      <Image
+                        source={{ uri: article.imagen_llamada_uno }}
+                        style={{
+                          width: 400, height: 400, resizeMode: 'contain',
+                        }}
+                      />
+                      {this.actionCallPublicidadDos(article)}
+                    </View>
+
+                  </View>
+                )
+
+                }
 
 
             </ScrollView>
