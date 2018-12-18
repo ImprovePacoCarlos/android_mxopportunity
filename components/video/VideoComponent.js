@@ -25,10 +25,7 @@ class VideoComponent extends Component {
 
         <YouTube
           apiKey="AIzaSyATx68cD2jLoASEoGM6_bSlX4CrR1-allg"
-          videoId="lJawRaON8h0" // The YouTube video ID
-        // play // control playback of video with true/false
-        // fullscreen // control whether the video should play in fullscreen or inline
-        // loop // control whether the video should loop when ended
+          videoId="lJawRaON8h0"
           onReady={e => this.setState({ isReady: true })}
           onChangeState={e => this.setState({ status: e.state })}
           onChangeQuality={e => this.setState({ quality: e.quality })}

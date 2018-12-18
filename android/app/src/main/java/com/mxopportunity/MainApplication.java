@@ -1,7 +1,6 @@
 package com.mxopportunity;
 
 import android.app.Application;
-
 import com.facebook.react.ReactApplication;
 import com.inprogress.reactnativeyoutube.ReactNativeYouTube;
 import com.brentvatne.react.ReactVideoPackage;

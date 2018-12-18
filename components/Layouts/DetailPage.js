@@ -143,6 +143,15 @@ class DetailPage extends Component {
               <View>
 
                 <Text style={styles.titulo}>{article.titulo}</Text>
+                <View style={styles.contenedorInfoFecha}>
+                  <IconMaterial name="calendar-clock" size={10} color="#52616b" />
+                  <Text style={styles.info_fecha}>{article.fecha_mostrada}</Text>
+                  <IconMaterial name="calendar-clock" size={10} color="#52616b" />
+                  <Text style={styles.info_fecha}>
+                    Redactado por
+                    {article.redactado_por}
+                  </Text>
+                </View>
                 <Text style={styles.descripcion}>
                   {article.cuerpo_uno}
                 </Text>
@@ -172,7 +181,6 @@ class DetailPage extends Component {
               article.video_tipo !== 'sin video'
                 ? (
                   <VideoComponent urlvideo={article.urlvideo} />
-
                 )
                 : null
             }
@@ -201,20 +209,33 @@ class DetailPage extends Component {
                     </View>
                   </View>
                 )
-                : (
+                : article.llamada_accion_uno !== 'Sinllamada' ? (
                   <View style={styles.publicidad}>
                     <View>
                       <Image
                         source={{ uri: article.imagen_llamada_uno }}
                         style={{
-                          width: 400, height: 400, resizeMode: 'contain',
+                          width: 300, height: 300, resizeMode: 'contain',
                         }}
                       />
-                      {this.actionCallPublicidadDos(article)}
+                      {this.actionCallPublicidadUno(article)}
                     </View>
-
                   </View>
-                )
+                ) : article.llamada_accion_dos !== 'Sinllamada'
+                  ? (
+                    <View style={styles.publicidad}>
+                      <View>
+                        <Image
+                          source={{ uri: article.imagen_llamada_dos }}
+                          style={{
+                            width: 300, height: 300, resizeMode: 'contain',
+                          }}
+                        />
+                        {this.actionCallPublicidadDos(article)}
+                      </View>
+                    </View>
+                  )
+                  : null
 
                 }
 
@@ -247,12 +268,28 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffff',
     marginBottom: 100,
   },
+  contenedorInfoFecha: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    marginHorizontal: 10,
+  },
+  info_fecha: {
+    fontFamily: 'Helvetica-Bold',
+    fontSize: 10,
+    letterSpacing: 1,
+    padding: 5,
+    color: '#52616b',
+  },
   titulo: {
     fontFamily: 'Helvetica-Bold',
     fontSize: 20,
     letterSpacing: 2,
-    padding: 5,
+    paddingHorizontal: 5,
+    marginBottom: -10,
   },
+
   descripcion: {
     fontFamily: 'Helvetica',
     fontSize: 16,
