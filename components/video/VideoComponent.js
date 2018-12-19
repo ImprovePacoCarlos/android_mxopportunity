@@ -25,7 +25,7 @@ class VideoComponent extends Component {
 
         <YouTube
           apiKey="AIzaSyATx68cD2jLoASEoGM6_bSlX4CrR1-allg"
-          videoId="lJawRaON8h0"
+          videoId={this.props.urlvideo}
           onReady={e => this.setState({ isReady: true })}
           onChangeState={e => this.setState({ status: e.state })}
           onChangeQuality={e => this.setState({ quality: e.quality })}
