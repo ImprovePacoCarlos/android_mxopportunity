@@ -7,7 +7,10 @@ import { connect } from 'react-redux';
 import HeaderPage from '../header/HeaderPage';
 import CategoryPage from './CategoryPage';
 import {
-  actionCargarPublicacionesStore, actionGetArticulosCategoria, actionGetArticulo, actionGetArticulosDestacados,
+  actionCargarPublicacionesStore,
+  actionGetArticulosCategoria,
+  actionGetArticulo,
+  actionGetArticulosDestacados,
 } from '../../Store/Actions';
 
 

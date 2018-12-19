@@ -8,6 +8,9 @@ const CONSTANTES = {
   GET_EMPRESA: 'GET_EMPRESA',
   GET_EMPRESA_INFO: 'GET_EMPRESA_INFO',
   GET_CATEGORIAS_EMPRESA: 'GET_CATEGORIAS_EMPRESA',
+  EMPRESA: 'MxOpportunity',
+  URLAPI: 'https://apiplanb.xyz',
+
 };
 
 export default CONSTANTES;

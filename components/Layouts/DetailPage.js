@@ -146,9 +146,9 @@ class DetailPage extends Component {
                 <View style={styles.contenedorInfoFecha}>
                   <IconMaterial name="calendar-clock" size={10} color="#52616b" />
                   <Text style={styles.info_fecha}>{article.fecha_mostrada}</Text>
-                  <IconMaterial name="calendar-clock" size={10} color="#52616b" />
+                  <Icon name="user-circle" size={10} color="#52616b" />
                   <Text style={styles.info_fecha}>
-                    Redactado por
+                    Redactado por:
                     {article.redactado_por}
                   </Text>
                 </View>
@@ -281,6 +281,7 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
     padding: 5,
     color: '#52616b',
+    marginRight: 15,
   },
   titulo: {
     fontFamily: 'Helvetica-Bold',

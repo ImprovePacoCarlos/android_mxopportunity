@@ -3,20 +3,23 @@ import {
 } from 'redux-saga/effects';
 import CONSTANTES from '../Const';
 import {
-  actionCargarPublicacionesStore, actionGetArticulo, actionGetEmpresaInfo, actionGetCategoriasEmpresa, actionGetArticulosDestacados,
+  actionCargarPublicacionesStore,
+  actionGetArticulo,
+  // actionGetEmpresaInfo,
+  actionGetCategoriasEmpresa,
+  actionGetArticulosDestacados,
 } from '../Actions';
 
 
-const URL = 'https://apiplanb.xyz';
-const ConsultaArticulosCategoria = categoria => fetch(`${URL}/publicar/filtroespecialarticulo/?q=${categoria}`,
-// const ConsultaArticulosCategoria = categoria => fetch(`${URL}/publicar/filtroespecialarticulo/`,
+// const ConsultaArticulosCategoria = categoria => fetch(`${CONSTANTES.URLAPI}/publicar/filtroespecialarticulo/?r=${CONSTANTES.EMPRESA}&q=${categoria}`,
+const ConsultaArticulosCategoria = categoria => fetch(`${CONSTANTES.URLAPI}/publicar/filtroespecialarticulo/?r=${CONSTANTES.EMPRESA}`,
   {
     method: 'GET',
 
   }).then(response => response.json());
 
 
-const ArticulosDestacados = () => fetch(`${URL}/publicar/filtroespecialarticulo/?portada=True`,
+const ArticulosDestacados = () => fetch(`${CONSTANTES.URLAPI}/publicar/filtroespecialarticulo/?r=${CONSTANTES.EMPRESA}&portada=True`,
   {
     method: 'GET',
   }).then(response => response.json());
@@ -37,7 +40,7 @@ function* generadoraArticulosCategoria() {
 }
 
 
-const ConsultaArticuloSlug = slug => fetch(`${URL}/publicar/filtroarticulos/?slug=${slug}`,
+const ConsultaArticuloSlug = slug => fetch(`${CONSTANTES.URLAPI}/publicar/filtroarticulos/?slug=${slug}`,
   {
     method: 'GET',
   }).then(response => response.json());
@@ -61,7 +64,7 @@ function* generadoraArticuloSlug() {
 //     method: 'GET',
 //   }).then(response => response.json());
 
-const ConsultaCategorias = empresa => fetch(`${URL}/publicar/filtrocategoria/`,
+const ConsultaCategorias = empresa => fetch(`${CONSTANTES.URLAPI}/publicar/filtrocategoria/?r=${CONSTANTES.EMPRESA}`,
   {
     method: 'GET',
   }).then(response => response.json());

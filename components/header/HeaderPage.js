@@ -6,7 +6,7 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import IconDos from 'react-native-vector-icons/Ionicons';
 import ShareComponent from '../share/ShareComponent';
-import ShareComponentApp from '../share/ShareComponentApp';
+// import ShareComponentApp from '../share/ShareComponentApp';
 
 
 class HeaderPage extends Component {
