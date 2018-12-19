@@ -49,14 +49,13 @@ class DrawerNavigation extends Component {
             ? categorias.categorias_empresa.map((c, key) => (
               <TouchableHighlight key={key} underlayColor="#eeeeee" onPress={this.navigateToScreen('Home', { categoria: c.nombre_categoria, articulos })}>
                 <View style={styles.navSectionStyle}>
-                  <Icon name="chevron-right" size={14} color="#222831" />
+                  <Icon name="chevron-right" size={14} color="#393251" />
                   <Text style={styles.labelStyle}>
                     {c.nombre_categoria}
                   </Text>
                 </View>
 
               </TouchableHighlight>
-
             ))
             : (
               <TouchableHighlight underlayColor="#eeeeee" onPress={this.navigateToScreen('Home', { categoria: 'ULTIMO' })}>
@@ -93,9 +92,10 @@ const styles = StyleSheet.create({
     opacity: 1,
     letterSpacing: 2,
     fontSize: 14,
-    color: '#222831',
+    color: '#393251',
     fontFamily: 'Helvetica',
     marginLeft: 10,
+
 
   },
   sectionHeadingStyle: {

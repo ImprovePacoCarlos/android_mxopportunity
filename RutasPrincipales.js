@@ -22,8 +22,8 @@ const RutasPrincipales = createDrawerNavigator({
 {
   contentComponent: DrawerNavigation,
   contentOptions: {
-    activeTintColor: '#1d2323',
-    activeBackgroundColor: '#ffff',
+    activeTintColor: '#393251',
+    activeBackgroundColor: '#393251',
 
     itemsContainerStyle: {
       opacity: 1,
@@ -31,7 +31,7 @@ const RutasPrincipales = createDrawerNavigator({
     },
     labelStyle: {
       opacity: 1,
-      borderColor: '#1d2323',
+      borderColor: 'rgb(57, 50, 81)',
       letterSpacing: 2,
       fontWeight: '300',
       fontSize: 14,
@@ -44,6 +44,5 @@ const RutasPrincipales = createDrawerNavigator({
   drawerCloseRoute: 'DrawerClose',
   drawerToggleRote: 'DrawerToggle',
 });
-
 
 export { RutasPrincipales };

@@ -3,8 +3,8 @@
     <item
         android:drawable="@color/blue"/>
     <item
-        android:width="50dp"
-        android:height="150dp"
-        android:drawable="@drawable/launch_screen"
+        android:width="600dp"
+        android:height="200dp"
+        android:drawable="@drawable/splash_dipra"
         android:gravity="center" />
 </layer-list>

@@ -3,10 +3,8 @@ import React, { Component } from 'react';
 import {
   StyleSheet, Image, TouchableOpacity, View,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome5';
 import IconDos from 'react-native-vector-icons/Ionicons';
 import ShareComponent from '../share/ShareComponent';
-import ShareComponentApp from '../share/ShareComponentApp';
 
 
 class HeaderPage extends Component {
@@ -29,23 +27,20 @@ class HeaderPage extends Component {
     return (
       <View>
         <View style={styles.header}>
-          <TouchableOpacity
-            onPress={() => navigation.openDrawer()}
-          >
+          <TouchableOpacity onPress={() => navigation.openDrawer()}>
             <IconDos name="md-menu" size={30} color="#222831" />
           </TouchableOpacity>
-
           <TouchableOpacity onPress={() => { navigation.navigate('Home'); }}>
             <Image style={styles.drawerImage} source={require('../../assets/images/logo.png')} />
           </TouchableOpacity>
 
 
-          {
+          {/* {
            navigation.state.routeName !== 'Detalle'
              ? null
 
              : <TouchableOpacity onPress={() => { this.toggleshareButton(); }}><Icon name="share-alt-square" style={styles.icondos} /></TouchableOpacity>
-          }
+          } */}
         </View>
 
         {
@@ -66,6 +61,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
     backgroundColor: '#ffff',
+    marginVertical: 20,
   },
   icon: {
     fontSize: 30,
@@ -76,8 +72,8 @@ const styles = StyleSheet.create({
     color: 'black',
   },
   drawerImage: {
-    height: 60,
-    width: 250,
+    height: 50,
+    width: 280,
   },
 });
 

@@ -64,6 +64,9 @@
 		2EB7BE50354D4C2EABADBD8C /* Helvetica.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 208CA4FD706C4CE4A7DE8BFD /* Helvetica.ttf */; };
 		E54DEFA7A26B4128A8B0918C /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF2D15E72B1E44528ACF905F /* libRCTVideo.a */; };
 		9A3866F577C543309894B5BA /* libRCTYouTube.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B13F22B3834DC4B2DC0672 /* libRCTYouTube.a */; };
+		9C709E2FEE0A42369D55CAD6 /* Facebook.svg in Resources */ = {isa = PBXBuildFile; fileRef = C2C9FDF9948F4604AA49AD22 /* Facebook.svg */; };
+		D3AA8B03149249BB8674FC51 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B067DBEE84846FB9836CDBB /* logo.png */; };
+		4FDA69D9B94C410DBCD9403A /* refresh.gif in Resources */ = {isa = PBXBuildFile; fileRef = AB043DFB96BF4DCF9272B74C /* refresh.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -403,6 +406,9 @@
 		FF2D15E72B1E44528ACF905F /* libRCTVideo.a */ = {isa = PBXFileReference; name = "libRCTVideo.a"; path = "libRCTVideo.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		9E96B81B51E0487186E8AC69 /* RCTYouTube.xcodeproj */ = {isa = PBXFileReference; name = "RCTYouTube.xcodeproj"; path = "../node_modules/react-native-youtube/RCTYouTube.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		B7B13F22B3834DC4B2DC0672 /* libRCTYouTube.a */ = {isa = PBXFileReference; name = "libRCTYouTube.a"; path = "libRCTYouTube.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		C2C9FDF9948F4604AA49AD22 /* Facebook.svg */ = {isa = PBXFileReference; name = "Facebook.svg"; path = "../assets/images/Facebook.svg"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4B067DBEE84846FB9836CDBB /* logo.png */ = {isa = PBXFileReference; name = "logo.png"; path = "../assets/images/logo.png"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		AB043DFB96BF4DCF9272B74C /* refresh.gif */ = {isa = PBXFileReference; name = "refresh.gif"; path = "../assets/images/refresh.gif"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -701,6 +707,9 @@
 				2739F0C3A1CA4D43BBF432A5 /* Helvetica-BoldOblique.ttf */,
 				99F0B9CE92C14A23A5A5AB51 /* Helvetica-Oblique.ttf */,
 				208CA4FD706C4CE4A7DE8BFD /* Helvetica.ttf */,
+				C2C9FDF9948F4604AA49AD22 /* Facebook.svg */,
+				4B067DBEE84846FB9836CDBB /* logo.png */,
+				AB043DFB96BF4DCF9272B74C /* refresh.gif */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1171,6 +1180,9 @@
 				B5B76D1C7E824E30B1E81591 /* Helvetica-BoldOblique.ttf in Resources */,
 				34AD4135FAF94AEC93E3D31F /* Helvetica-Oblique.ttf in Resources */,
 				2EB7BE50354D4C2EABADBD8C /* Helvetica.ttf in Resources */,
+				9C709E2FEE0A42369D55CAD6 /* Facebook.svg in Resources */,
+				D3AA8B03149249BB8674FC51 /* logo.png in Resources */,
+				4FDA69D9B94C410DBCD9403A /* refresh.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
