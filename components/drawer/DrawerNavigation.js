@@ -43,13 +43,13 @@ class DrawerNavigation extends Component {
   render() {
     const { categorias, articulos } = this.props;
     return (
-      <SafeAreaView style={{ flex: 1 }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#393251' }}>
         <ScrollView>
           {categorias.categorias_empresa && categorias.categorias_empresa.length > 0
             ? categorias.categorias_empresa.map((c, key) => (
-              <TouchableHighlight key={key} underlayColor="#eeeeee" onPress={this.navigateToScreen('Home', { categoria: c.nombre_categoria, articulos })}>
+              <TouchableHighlight key={key} onPress={this.navigateToScreen('Home', { categoria: c.nombre_categoria, articulos })}>
                 <View style={styles.navSectionStyle}>
-                  <Icon name="chevron-right" size={14} color="#393251" />
+                  <Icon name="chevron-right" size={14} color="#ffffff" />
                   <Text style={styles.labelStyle}>
                     {c.nombre_categoria}
                   </Text>
@@ -58,7 +58,7 @@ class DrawerNavigation extends Component {
               </TouchableHighlight>
             ))
             : (
-              <TouchableHighlight underlayColor="#eeeeee" onPress={this.navigateToScreen('Home', { categoria: 'ULTIMO' })}>
+              <TouchableHighlight onPress={this.navigateToScreen('Home', { categoria: 'ULTIMO' })}>
                 <View style={styles.navSectionStyle}>
                   <Text style={styles.labelStyle}>
                   LO ULTIMO
@@ -81,18 +81,20 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   navSectionStyle: {
-    opacity: 1,
-    borderBottomWidth: 1,
-    padding: 8,
+    borderBottomWidth: 2,
+    borderColor: '#ffffff',
+    padding: 10,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
+    backgroundColor: '#393251',
+
   },
   labelStyle: {
     opacity: 1,
     letterSpacing: 2,
     fontSize: 14,
-    color: '#393251',
+    color: '#ffffff',
     fontFamily: 'Helvetica',
     marginLeft: 10,
 

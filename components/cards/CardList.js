@@ -36,7 +36,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     flexWrap: 'wrap',
-    marginVertical: 50,
+    marginTop: 20,
+    marginBottom: 100,
 
   },
   refreshContainer: {

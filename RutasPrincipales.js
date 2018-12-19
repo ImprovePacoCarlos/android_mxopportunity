@@ -45,4 +45,5 @@ const RutasPrincipales = createDrawerNavigator({
   drawerToggleRote: 'DrawerToggle',
 });
 
+
 export { RutasPrincipales };
